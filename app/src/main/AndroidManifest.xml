@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AAAChat">
+        <activity android:name=".AboutUsActivity"></activity>
         <activity android:name=".auth.PhoneLoginActivity" />
         <activity android:name=".startup.WelcomeScreenActivity" />
         <activity android:name=".SplashActivity">

@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:text="FarmGo"
                     android:textColor="@color/white"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="35dp"
                     android:textSize="22sp"
                     android:textStyle="bold"/>
 

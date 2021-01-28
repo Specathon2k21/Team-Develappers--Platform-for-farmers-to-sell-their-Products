@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -43,7 +44,6 @@ public class buyerMainActivity extends AppCompatActivity implements NavigationVi
         setSupportActionBar(binding.toolbar);
 
         binding.navigation.setNavigationItemSelectedListener(this);
-
 
         binding.viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -137,7 +137,11 @@ public class buyerMainActivity extends AppCompatActivity implements NavigationVi
                     break;
 
                 case R.id.menu_aboutUs:
-                    Toast.makeText(this,"About Us",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(buyerMainActivity.this, AboutUsActivity.class));
+                    break;
+
+                case R.id.menu_terms:
+                    Toast.makeText(this,"Terms and Conditions",Toast.LENGTH_SHORT).show();
                     break;
             }
             return super.onOptionsItemSelected(item);
