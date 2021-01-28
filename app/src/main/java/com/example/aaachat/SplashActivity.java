@@ -8,7 +8,8 @@ import android.os.Handler;
 
 import com.example.aaachat.startup.WelcomeScreenActivity;
 
-public class SplashActivity extends AppCompatActivity {
+public class
+SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +18,8 @@ public class SplashActivity extends AppCompatActivity {
 
         new Handler().postDelayed(new Runnable() {
             @Override
-            public void run() {
+            public void run()
+            {
                 startActivity(new Intent(SplashActivity.this, WelcomeScreenActivity.class));
                 finish();
             }

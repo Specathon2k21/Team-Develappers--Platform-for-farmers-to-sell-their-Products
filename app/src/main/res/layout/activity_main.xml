@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,13 +21,28 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                app:title="FarmGo"
-                app:titleMarginStart="40dp"
-                app:logo="@drawable/ic_baseline_view_headline_24"
+                app:titleMarginStart="0dp"
+                android:fitsSystemWindows="true"
+                app:title=" "
                 app:titleTextColor="@color/white">
 
-            </androidx.appcompat.widget.Toolbar>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="ClickMenu"
+                    android:src="@drawable/ic_baseline_menu_24"
+                    android:layout_gravity="start"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FarmGo"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="30dp"
+                    android:textSize="22sp"
+                    android:textStyle="bold"/>
+
+            </androidx.appcompat.widget.Toolbar>
 
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -54,6 +71,10 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:menu="@menu/navigation_menu"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_action"
@@ -63,6 +84,18 @@
             android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+
     </RelativeLayout>
 
 </layout>
+
+<!--
+<androidx.drawerlayout.widget.DrawerLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+
+
+        </androidx.drawerlayout.widget.DrawerLayout>
+-->
