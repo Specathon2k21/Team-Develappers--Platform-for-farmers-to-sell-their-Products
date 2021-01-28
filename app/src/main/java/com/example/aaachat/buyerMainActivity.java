@@ -23,11 +23,12 @@ import com.example.aaachat.menu.Category3Fragment;
 import com.example.aaachat.menu.Category4Fragment;
 import com.example.aaachat.menu.Category5Fragment;
 import com.example.aaachat.menu.Category6Fragment;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class buyerMainActivity extends AppCompatActivity {
+public class buyerMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ActivityMainBinding binding;
 
@@ -40,6 +41,9 @@ public class buyerMainActivity extends AppCompatActivity {
         setUpViewPager(binding.viewPager);
         binding.tabLayout.setupWithViewPager(binding.viewPager);
         setSupportActionBar(binding.toolbar);
+
+        binding.navigation.setNavigationItemSelectedListener(this);
+
 
         binding.viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -115,6 +119,30 @@ public class buyerMainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            int id = item.getItemId();
+            switch (id)
+            {
+                case R.id.menu_back:
+                    Toast.makeText(this,"Back",Toast.LENGTH_SHORT).show();
+                    break;
+
+                case R.id.menu_home:
+                    Toast.makeText(this,"Home",Toast.LENGTH_SHORT).show();
+                    break;
+
+                case R.id.menu_bookmarks:
+                    Toast.makeText(this,"Bookmarks",Toast.LENGTH_SHORT).show();
+                    break;
+
+                case R.id.menu_aboutUs:
+                    Toast.makeText(this,"About Us",Toast.LENGTH_SHORT).show();
+                    break;
+            }
+            return super.onOptionsItemSelected(item);
+    }
+
     private static class SectionsPagerAdapter extends FragmentPagerAdapter
     {
         private final List<Fragment> mFragmentList = new ArrayList<>();
@@ -171,4 +199,7 @@ public class buyerMainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
 }

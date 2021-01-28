@@ -72,9 +72,11 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
         <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            app:menu="@menu/navigation_menu"/>
+            app:menu="@menu/navigation_menu"
+            android:layout_gravity="start"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_action"
