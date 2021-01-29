@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AAAChat">
-        <activity android:name=".AboutUsActivity"></activity>
+        <activity android:name=".auth.Phoneno_verify"/>
+        <activity android:name=".auth.otp_check"/>
+        <activity android:name=".startup.Seller_Page"></activity>
+        <activity android:name=".startup.Profile_Page" />
+        <activity android:name=".AboutUsActivity" />
         <activity android:name=".auth.PhoneLoginActivity" />
         <activity android:name=".startup.WelcomeScreenActivity" />
         <activity android:name=".SplashActivity">
