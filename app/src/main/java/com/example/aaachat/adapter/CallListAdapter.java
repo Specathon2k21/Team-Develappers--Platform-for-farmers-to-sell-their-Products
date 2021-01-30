@@ -30,14 +30,14 @@ public class CallListAdapter extends RecyclerView.Adapter<CallListAdapter.Holder
 
     @NonNull
     @Override
-    public CallListAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(context).inflate(R.layout.layout_call_list,parent,false);
         return new Holder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CallListAdapter.Holder holder, int position) {
+    public void onBindViewHolder(@NonNull Holder holder, int position) {
         CallList callList = list.get(position);
 
         holder.tvName.setText(callList.getUserName());

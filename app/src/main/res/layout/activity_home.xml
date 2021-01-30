@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".startup.HomeActivity"
+    android:orientation="vertical"
+    >
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:titleMarginStart="0dp"
+            android:fitsSystemWindows="true"
+            app:title=" "
+            app:titleTextColor="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FarmGo"
+                android:textColor="@color/white"
+                android:layout_marginStart="55dp"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="75dp"
+            android:orientation="horizontal"
+            android:background="#C88C33"
+            android:padding="11dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="GO TO SHOPPING"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:id="@+id/home_to_buyer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_forward_24"
+                android:layout_marginLeft="5dp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/seller_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I am a seller"
+            android:layout_margin="75dp"
+            android:backgroundTint="#C88C33"/>
+
+    </LinearLayout>
+
+</LinearLayout>

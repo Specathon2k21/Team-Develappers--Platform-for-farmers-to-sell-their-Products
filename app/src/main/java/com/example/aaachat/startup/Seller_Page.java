@@ -1,9 +1,5 @@
 package com.example.aaachat.startup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
@@ -21,6 +17,10 @@ import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aaachat.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -49,7 +49,8 @@ public class Seller_Page extends AppCompatActivity {
     private AutoCompleteTextView textView;
     private ImageButton imageButton;
     private TextView category_name;
-    private DatabaseReference ref1=FirebaseDatabase.getInstance().getReference("Items");
+    private TextView market_price;
+    private DatabaseReference ref1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +90,8 @@ public class Seller_Page extends AppCompatActivity {
         imageButton=(ImageButton)findViewById(R.id.imageButton);
         category_name=(TextView)findViewById(R.id.category_name);
         textView=(AutoCompleteTextView)findViewById(R.id.autoCompleteTextView);
+        market_price=(TextView)findViewById(R.id.marketprice);
+        ref1= FirebaseDatabase.getInstance().getReference("items");
 
         ValueEventListener event=new ValueEventListener() {
               @Override
@@ -166,7 +169,7 @@ public class Seller_Page extends AppCompatActivity {
             category_name.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    DatabaseReference ref1=FirebaseDatabase.getInstance().getReference("items");
+                    DatabaseReference ref1= FirebaseDatabase.getInstance().getReference("items");
                     ref1.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot datasnapshot) {
@@ -175,7 +178,7 @@ public class Seller_Page extends AppCompatActivity {
                                 for(DataSnapshot child:Parent.getChildren())
                                 {
                                     String children=child.getValue(String.class);
-                                    if(children.equals(textView.getText().toString().toUpperCase()))
+                                    if(children.equals(textView.getText().toString()))
                                     {
                                         String parent_name= Parent.getKey();
                                         category_name.setText(parent_name);
@@ -190,9 +193,25 @@ public class Seller_Page extends AppCompatActivity {
 
                         }
                     });
-
                 }
             });
+            market_price.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DatabaseReference prd = FirebaseDatabase.getInstance().getReference("Market-Price");
+                    DatabaseReference prd1 = prd.child(category_name.getText().toString()).child(textView.getText().toString());
+                    prd1.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dsnapshot) {
+                            market_price.setText(dsnapshot.getValue(Long.class).toString());
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                }
+            });
+
             imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -201,27 +220,23 @@ public class Seller_Page extends AppCompatActivity {
                     popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
-                            if(item.getItemId()==R.id.item1)
+                            if(item.getItemId()== R.id.item1)
                             {
                                 category_name.setText(item.getTitle());
                             }
-                            if(item.getItemId()==R.id.item2)
+                            if(item.getItemId()== R.id.item2)
                             {
                                 category_name.setText(item.getTitle());
                             }
-                            if(item.getItemId()==R.id.item3)
+                            if(item.getItemId()== R.id.item3)
                             {
                                 category_name.setText(item.getTitle());
                             }
-                            if(item.getItemId()==R.id.item4)
+                            if(item.getItemId()== R.id.item4)
                             {
                                 category_name.setText(item.getTitle());
                             }
-                            if(item.getItemId()==R.id.item5)
-                            {
-                                category_name.setText(item.getTitle());
-                            }
-                            if(item.getItemId()==R.id.item6)
+                            if(item.getItemId()== R.id.item5)
                             {
                                 category_name.setText(item.getTitle());
                             }

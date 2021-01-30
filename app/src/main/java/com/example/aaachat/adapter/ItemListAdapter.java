@@ -20,12 +20,10 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.Holder
 
     private  List<ItemList> list;
     private Context context;
-    int []arr;
 
-    public ItemListAdapter(List<ItemList> list, Context context, int[] arr) {
+    public ItemListAdapter(List<ItemList> list, Context context) {
         this.list = list;
         this.context = context;
-        this.arr = arr;
     }
 
     @NonNull
@@ -37,16 +35,13 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.Holder
 
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
-        ItemList itemList = list.get(position);
-        holder.profileImage.setImageResource(arr[position]);
-        holder.itemName.setText(itemList.getItemName());
-        //
-
+        holder.itemName.setText(list.get(position).getItemName());
+        Glide.with(context).load(list.get(position).getImageProfile()).into(holder.profileImage);
     }
 
     @Override
     public int getItemCount() {
-        return arr.length;
+        return list.size();
     }
 
     public class Holder extends RecyclerView.ViewHolder {

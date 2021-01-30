@@ -1,14 +1,14 @@
 package com.example.aaachat.startup;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.aaachat.buyerMainActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+
 import com.example.aaachat.R;
+import com.example.aaachat.auth.Phoneno_verify;
 
 public class WelcomeScreenActivity extends AppCompatActivity {
 
@@ -24,7 +24,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         btnAgree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(WelcomeScreenActivity.this, buyerMainActivity.class));
+                startActivity(new Intent(WelcomeScreenActivity.this, Phoneno_verify.class));
             }
         });
     }

@@ -1,15 +1,12 @@
 package com.example.aaachat.model;
 
-import android.graphics.drawable.Drawable;
-
 public class ItemList {
     private String itemName;
-    private Drawable imageProfile;
-
+    private String imageProfile;
     public ItemList() {
     }
 
-    public ItemList(String itemName, Drawable imageProfile) {
+    public ItemList(String itemName, String imageProfile) {
         this.itemName = itemName;
         this.imageProfile = imageProfile;
     }
@@ -22,11 +19,11 @@ public class ItemList {
         this.itemName = itemName;
     }
 
-    public Drawable getImageProfile() {
+    public String getImageProfile() {
         return imageProfile;
     }
 
-    public void setImageProfile(Drawable imageProfile) {
+    public void setImageProfile(String imageProfile) {
         this.imageProfile = imageProfile;
     }
 }

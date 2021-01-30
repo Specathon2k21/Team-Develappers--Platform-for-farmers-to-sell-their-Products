@@ -1,18 +1,20 @@
 package com.example.aaachat.auth;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.aaachat.buyerMainActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
 import com.example.aaachat.R;
+import com.example.aaachat.buyerMainActivity;
 import com.example.aaachat.databinding.ActivityPhoneLoginBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,6 +33,8 @@ public class PhoneLoginActivity extends AppCompatActivity {
 
     private static final String TAG = "PhoneLoginActivity";
     private ActivityPhoneLoginBinding binding;
+    LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
 
     private FirebaseAuth mAuth;
     private String mVerificationId;
@@ -44,27 +48,21 @@ public class PhoneLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_phone_login);
-
         mAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
         Toast.makeText(this, "Before button click", Toast.LENGTH_LONG).show();
-
         binding.btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 System.out.println("Button clicked");
-                if(binding.btnNext.getText().equals("Next"))
-                {
+                if (binding.btnNext.getText().equals("Next")) {
                     progressDialog.setMessage("Please wait...");
                     progressDialog.show();
 
-                    String phone = "+"+binding.editCountryCode.getText().toString()+binding.editPhone.getText().toString();
+                    String phone = "+" + binding.editCountryCode.getText().toString() + binding.editPhone.getText().toString();
                     startPhoneNumberVerification(phone);
-                }
-
-                else
-                {
+                } else {
                     progressDialog.setMessage("Verifying...");
                     progressDialog.show();
 
@@ -76,14 +74,10 @@ public class PhoneLoginActivity extends AppCompatActivity {
 
     private void verifyPhoneNumberWithCode(String mVerificationId, String code) {
 
-        if(code.isEmpty())
-        {
-            Toast.makeText(this,"Verification cannot be empty!!!",Toast.LENGTH_LONG).show();
+        if (code.isEmpty()) {
+            Toast.makeText(this, "Verification cannot be empty!!!", Toast.LENGTH_LONG).show();
             progressDialog.dismiss();
-        }
-
-        else
-        {
+        } else {
             // [START verify_with_code]
             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, code);
             // [END verify_with_code]
@@ -96,8 +90,7 @@ public class PhoneLoginActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful())
-                        {
+                        if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             progressDialog.dismiss();
                             Log.d(TAG, "signInWithCredential:success");
@@ -106,10 +99,7 @@ public class PhoneLoginActivity extends AppCompatActivity {
                             // [START_EXCLUDE]
                             startActivity(new Intent(PhoneLoginActivity.this, buyerMainActivity.class));
                             // [END_EXCLUDE]
-                        }
-
-                        else
-                        {
+                        } else {
                             // Sign in failed, display a message and update the UI
                             progressDialog.dismiss();
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -118,10 +108,10 @@ public class PhoneLoginActivity extends AppCompatActivity {
                                 // [START_EXCLUDE silent]
                                 Log.d(TAG, "onComplete: Error Code");
                                 // [END_EXCLUDE]
-                        }
-                        // [START_EXCLUDE silent]
-                        // Update UI
-                        // [END_EXCLUDE]
+                            }
+                            // [START_EXCLUDE silent]
+                            // Update UI
+                            // [END_EXCLUDE]
                         }
                     }
                 });
@@ -136,7 +126,7 @@ public class PhoneLoginActivity extends AppCompatActivity {
 
             @Override
             public void onVerificationFailed(@NonNull FirebaseException e) {
-                Log.d(TAG, "onVerificationFailed: "+e.getMessage());
+                Log.d(TAG, "onVerificationFailed: " + e.getMessage());
 
             }
 
@@ -170,5 +160,9 @@ public class PhoneLoginActivity extends AppCompatActivity {
                         .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
                         .build();
         PhoneAuthProvider.verifyPhoneNumber(options);
+    }
+
+    public void getloc(View view) {
+
     }
 }

@@ -1,12 +1,13 @@
 package com.example.aaachat;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.aaachat.startup.WelcomeScreenActivity;
+
 
 public class
 SplashActivity extends AppCompatActivity {
@@ -23,6 +24,11 @@ SplashActivity extends AppCompatActivity {
                 startActivity(new Intent(SplashActivity.this, WelcomeScreenActivity.class));
                 finish();
             }
-        }, 3000);
+        }, 2000);
     }
 }
+
+
+
+
+

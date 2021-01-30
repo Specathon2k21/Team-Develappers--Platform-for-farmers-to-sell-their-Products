@@ -26,11 +26,12 @@
                 app:title=" "
                 app:titleTextColor="@color/white">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="ClickMenu"
-                    android:src="@drawable/ic_baseline_menu_24"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:onClick="ClickProfile"
+                    android:src="@drawable/farmer"
                     android:layout_gravity="start"/>
 
                 <TextView
@@ -71,12 +72,7 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigation"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:menu="@menu/navigation_menu"
-            android:layout_gravity="start"/>
+
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_action"
@@ -97,7 +93,12 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
-
+            <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:menu="@menu/navigation_menu"
+            android:layout_gravity="start"/>
 
         </androidx.drawerlayout.widget.DrawerLayout>
 -->
